@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolobrodka | Инди-игры</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon">🎮</span>
+                    <span>Kolobrodka</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#home">Главная</a>
+                    <a href="#games">Игры</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Важное заявление!</h1>
+            <p>Кто прочитает, тот арбуз</p>
+            <a href="#games" class="btn">Иди нафиг</a>
+        </div>
+    </section>
+
+    <!-- Секция с играми -->
+    <section class="games-section" id="games">
+        <div class="container">
+            <h2 class="section-title">Легенды, справа налево:</h2>
+            <div class="games-grid">
+                
+                <!-- Игра 1 -->
+                <div class="game-card">
+                    <img src="images/monstroloven_title.png" alt="Monstroloven" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">Monstroloven</h3>
+                        <p class="game-description">Ты будешь иметь дело со сверхъестественными событиями в своём городе...</p>
+                        
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="images/monstroloven_1.png" alt="Скриншот 1" class="active">
+                                <img src="images/monstroloven_2.png" alt="Скриншот 2">
+                                <img src="images/monstroloven_3.png" alt="Скриншот 3">
+                            </div>
+                            <button class="carousel-prev">&lt;</button>
+                            <button class="carousel-next">&gt;</button>
+                            <div class="carousel-dots"></div>
+                        </div>
+                        
+                        <div class="game-meta">
+                            <span class="game-genre">Хоррор</span>
+                            <a href="https://monstroloven.netlify.app/" class="btn">Играть</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Игра 2 -->
+                <div class="game-card">
+                    <img src="images/anzawar_title.jpg" alt="Anzawar" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">Anzawar</h3>
+                        <p class="game-description">Это игра про тотальную среедневековую войну. Я всё сказал</p>
+                        
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="images/anzawar_1.jpg" alt="Скриншот 1" class="active">
+                                <img src="images/anzawar_2.jpg" alt="Скриншот 2">
+                                <img src="images/anzawar_3.jpg" alt="Скриншот 3">
+                            </div>
+                            <button class="carousel-prev">&lt;</button>
+                            <button class="carousel-next">&gt;</button>
+                            <div class="carousel-dots"></div>
+                        </div>
+                        
+                        <div class="game-meta">
+                            <span class="game-genre">Пошаговая стратегия</span>
+                            <a href="https://anzawar.netlify.app/" class="btn">Играть</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Игра 3 -->
+                <div class="game-card">
+                    <img src="images/evilworld_title.jpg" alt="Evil World" class="game-image">
+                    <div class="game-content">
+                        <h3 class="game-title">Evil World</h3>
+                        <p class="game-description">Однажды полчища монстров из ада во главе с Дьяволом вырвалась на поверхность и заполонили мир. Ваша задача — победить армию Дьявола и исцелить Злой Мир</p>
+                        
+                        <div class="carousel">
+                            <div class="carousel-images">
+                                <img src="images/evilworld_1.jpg" alt="Скриншот 1" class="active">
+                                <img src="images/evilworld_2.jpg" alt="Скриншот 2">
+                                <img src="images/evilworld_3.jpg" alt="Скриншот 3">
+                            </div>
+                            <button class="carousel-prev">&lt;</button>
+                            <button class="carousel-next">&gt;</button>
+                            <div class="carousel-dots"></div>
+                        </div>
+                        
+                        <div class="game-meta">
+                            <span class="game-genre">Платформер</span>
+                            <a href="#" class="btn">Играть</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно для галереи -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О себе</h3>
+                    <p>Я люблю делать игры. Может быть не отличаются ULTRA HD RTX++ графикой, но в них есть такая немаловажная штука под названием <b>душа.</b> Ну а если тебя это не особо впечатляет, то тут ещё есть весьма интересный сюжет и нетипичные для игровых жанров механики. Ты обязательно найдёшь для себя кое-что свежее</p>
+                </div>
+                
+                <div class="footer-section" id="contact">
+                    <h3>Контакты</h3>
+                    <div class="footer-links">
+                        <a href="mailto:kolobroden@gmail.com">kolobroden@gmail.com</a>
+                        <a href="http://vk.com/kstarudoccit">VK</a>
+                        <a href="http://t.me/occitanian">Telegram</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="current-year"></span> Kolobrodka. Все права защищены (шутка - не особо защищены)</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Функции для модального окна галереи
+        function openModal(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = img.src;
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        
+        // Закрытие модального окна при клике вне изображения
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+        
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Динамическое обновление года в футере
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Инициализация каруселей
+        document.querySelectorAll('.carousel').forEach(carousel => {
+            const images = carousel.querySelector('.carousel-images');
+            const imagesCount = images.children.length;
+            const prevBtn = carousel.querySelector('.carousel-prev');
+            const nextBtn = carousel.querySelector('.carousel-next');
+            const dotsContainer = carousel.querySelector('.carousel-dots');
+            
+            let currentIndex = 0;
+            
+            // Создаем точки
+            for (let i = 0; i < imagesCount; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+                dotsContainer.appendChild(dot);
+            }
+            
+            const dots = dotsContainer.querySelectorAll('.dot');
+            
+            // Функция перехода к слайду
+            function goToSlide(index) {
+                currentIndex = index;
+                images.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Обновляем активную точку
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+            
+            // Следующий слайд
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % imagesCount;
+                goToSlide(currentIndex);
+            }
+            
+            // Предыдущий слайд
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + imagesCount) % imagesCount;
+                goToSlide(currentIndex);
+            }
+            
+            // Вешаем обработчики на кнопки
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Автопрокрутка (опционально)
+            // setInterval(nextSlide, 5000);
+        });
+    </script>
+</body>
+</html>
