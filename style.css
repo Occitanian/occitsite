@@ -1,3 +1,16 @@
+@font-face {
+    font-family: 'Aqum';
+    src: url('fonts/Aqum.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.aqum-font {
+    font-family: 'Aqum', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px; /* Добавим небольшой межбуквенный интервал для лучшей читаемости */
+}
+
 /* Глобальные стили */
 * {
     margin: 0;
@@ -37,7 +50,7 @@ header {
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--accent);
     display: flex;
@@ -132,6 +145,11 @@ nav {
 /* Секция игр */
 .games-section {
     padding: 5rem 0;
+}
+
+.game-title.aqum-font {
+    font-size: 1.7rem;
+    margin-bottom: 0.8rem;
 }
 
 .section-title {
