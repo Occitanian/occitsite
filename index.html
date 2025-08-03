@@ -6,6 +6,15 @@
     <title>Окситанец | Инди-игры</title>
     <link rel="icon" href="images/Summer.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'Aqum';
+            src: url('fonts/Aqum.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
 </head>
 <body>
     <!-- Шапка -->
@@ -13,45 +22,70 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <span class="logo-icon">🎮</span>
+                    <img src="images/Summer.png" alt="Логотип" class="logo-icon">
                     <span class="aqum-font">Окситанец</span>
                 </div>
                 <div class="nav-links">
-                    <a href="#home">Главная</a>
-                    <a href="#games">Игры</a>
-                    <a href="#contact">Контакты</a>
+                    <div class="dropdown">
+                        <a href="#games" class="dropbtn aqum-font">Игры</a>
+                        <div class="dropdown-content">
+                            <a href="#monstroloven" class="aqum-font dropdown-horror">
+                                <img src="images/monstroloven_icon.png" alt="Monstroloven" class="dropdown-icon"> Monstroloven
+                            </a>
+                            <a href="#kolobroden" class="aqum-font dropdown-maze">
+                                <img src="images/kolobroden_icon.png" alt="Kolobroden" class="dropdown-icon"> Колобродень
+                            </a>
+                            <a href="#skutumit" class="aqum-font dropdown-shooter">
+                                <img src="images/skutumit_icon.png" alt="Skutumit" class="dropdown-icon"> Скутумит
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#contact" class="aqum-font">Контакты</a>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!---
-    -- Герой-секция --
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Важное заявление!</h1>
-            <p></p>
-            <a href="#games" class="btn">Смотреть игры</a>
-        </div>
-    </section>
-    -->
-
     <!-- Секция с играми -->
     <section class="games-section" id="games">
         <div class="container">
-            <h2 class="section-title">Легенды, справа налево:</h2>
-            <div class="games-grid">
+            <div class="games-list">
                 
                 <!-- Игра 1 -->
-                <div class="game-card">
-                    <img src="images/monstroloven_title.png" alt="Monstroloven" class="game-image">
+                <div class="game-card game-card-horror" id="monstroloven">
+                    <div class="game-cover-container">
+                        <div class="game-cover">
+                            <img src="images/monstroloven_title.png" alt="Monstroloven" class="game-title-image">
+                        </div>
+                    </div>
+                    
                     <div class="game-content">
-                         <h3 class="game-title aqum-font">Monstroloven</h3>
-                        <p class="game-description">Ты будешь иметь дело со сверхъестественными событиями в своём городе...</p>
+                        <div class="game-header">
+                            <h3 class="game-title aqum-font">Monstroloven</h3>
+                            <span class="game-genre aqum-font">Хоррор</span>
+                        </div>
+                        
+                        <div class="game-description">
+                            <p>"История про мой сломанный городок"</p>
+                            <p>Привет. Меня зовут... ну, неважно. Я из того самого городка за стеной, где все друг друга знают, а по воскресеньям пахнет жареным барашком</p>
+                            <p><span class="icon">🌇</span> <strong>Как всё было</strong><br>Жили спокойно. Хлеб пекли, в бога молились – обычное дело. Даже когда небо дало трещину, никто не паниковал</p>
+                            <p>Пока не начали пропадать животные</p>
+                            <p><span class="icon">🐺</span> <strong>Тревожный звоночек</strong><br>Старый пастух Ахмед клялся, что видел, как его собака "встала на задние лапы и заговорила клинописью". Мы смеялись</p>
+                            <p>Потом Ахмеда нашли без головы</p>
+                            <p><span class="icon">🧱</span> <strong>Стены</strong><br>А потом пришли солдаты и за одну ночь построили эти чёртовы стены. Говорили: "Для вашей же безопасности". Но почему-то оставили нас внутри – вместе с ними</p>
+                            <p><span class="icon">🔪</span> <strong>Как теперь живём</strong><br>Теперь мы прячемся по подвалам. Расставляем капканы и надеемся, что проживём ещё хотя бы одну ночь</p>
+                            <p>А я просто хочу понять:</p>
+                            <ul>
+                                <li>Кто на самом деле построил эти стены?</li>
+                                <li>Почему укусы этих тварей заставляют людей... меняться?</li>
+                                <li>И главное – зачем все монстры каждую ночь идут к старой башне в центре города?</li>
+                            </ul>
+                        </div>
                         
                         <div class="carousel">
                             <div class="carousel-images">
-                                <img src="images/monstroloven_1.png" alt="Скриншот 1" class="active">
+                                <img src="images/monstroloven_0.png" alt="Скриншот 0" class="active">
+                                <img src="images/monstroloven_1.png" alt="Скриншот 1">
                                 <img src="images/monstroloven_2.png" alt="Скриншот 2">
                                 <img src="images/monstroloven_3.png" alt="Скриншот 3">
                             </div>
@@ -61,24 +95,43 @@
                         </div>
                         
                         <div class="game-meta">
-                            <span class="game-genre">Хоррор</span>
                             <a href="https://monstroloven.netlify.app/" class="btn">Играть</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Игра 2 -->
-                <div class="game-card">
-                    <img src="images/anzawar_title.jpg" alt="Anzawar" class="game-image">
+                <div class="game-card game-card-maze" id="kolobroden">
+                    <div class="game-cover-container">
+                        <div class="game-cover">
+                            <img src="images/kolo_title.jpg" alt="Kolobroden" class="game-title-image">
+                        </div>
+                    </div>
+                    
                     <div class="game-content">
-                         <h3 class="game-title aqum-font">Anzawar</h3>
-                        <p class="game-description">Это игра про тотальную среедневековую войну. Я всё сказал</p>
+                        <div class="game-header">
+                            <h3 class="game-title aqum-font">Колобродень</h3>
+                            <span class="game-genre aqum-font">Лабиринт</span>
+                        </div>
+                        
+                        <div class="game-description">
+                            <p><span class="icon">☀️</span> Два королевства, скованные вековой враждой, бьются за господство над континентом</p>
+                            <p><span class="icon">🛡️</span> От хмурых северных морей до непролазных южных чащоб — вся граница звенит сталью и грохотом доспехов</p>
+                            <p>Но на самой линии фронта высится Замок Без Имени</p>
+                            <p>Древние летописи шепчут: в его сердце хранится оружие, смеющееся над законами войны</p>
+                            <p>То, что в народе зовётся не иначе как «Выбиватель Душ»</p>
+                            <p>Смельчаки и королевские отряды год за годом бесследно исчезали за его стенами</p>
+                            <p>Никто не вернулся.</p>
+                            <p>Теперь ваш черёд, агент <span class="icon">🎩</span></p>
+                            <p>Станете легендой...</p>
+                            <p>...или очередной её частью?</p>
+                        </div>
                         
                         <div class="carousel">
                             <div class="carousel-images">
-                                <img src="images/anzawar_1.jpg" alt="Скриншот 1" class="active">
-                                <img src="images/anzawar_2.jpg" alt="Скриншот 2">
-                                <img src="images/anzawar_3.jpg" alt="Скриншот 3">
+                                <img src="images/kolo_1.jpg" alt="Скриншот 1" class="active">
+                                <img src="images/kolo_2.jpg" alt="Скриншот 2">
+                                <img src="images/kolo_3.jpg" alt="Скриншот 3">
                             </div>
                             <button class="carousel-prev">&lt;</button>
                             <button class="carousel-next">&gt;</button>
@@ -86,24 +139,47 @@
                         </div>
                         
                         <div class="game-meta">
-                            <span class="game-genre">Пошаговая стратегия</span>
-                            <a href="https://anzawar.netlify.app/" class="btn">Играть</a>
+                            <a href="https://kolobroden.netlify.app/" class="btn">Играть</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Игра 3 -->
-                <div class="game-card">
-                    <img src="images/evilworld_title.jpg" alt="Evil World" class="game-image">
+                <div class="game-card game-card-shooter" id="skutumit">
+                    <div class="game-cover-container">
+                        <div class="game-cover">
+                            <img src="images/skutumit_title.jpg" alt="Skutumit" class="game-title-image">
+                        </div>
+                    </div>
+                    
                     <div class="game-content">
-                        <h3 class="game-title aqum-font">Злой мир</h3>
-                        <p class="game-description">Однажды полчища монстров из ада во главе с Дьяволом вырвалась на поверхность и заполонили мир. Ваша задача — победить армию Дьявола и исцелить Злой Мир</p>
+                        <div class="game-header">
+                            <h3 class="game-title aqum-font">Скутумит</h3>
+                            <span class="game-genre aqum-font">Стрелялка</span>
+                        </div>
+                        
+                        <div class="game-description">
+                            <p><span class="icon">☀️</span> Саммерсетшир, наш заклятый враг, обрушился на наши земли по всей границе</p>
+                            <p>Их армии, ковавшие мечи годами, теперь рвут нашу оборону. Их атаки стремительны... и, увы, чудовищно успешны</p>
+                            <p><span class="icon">🛡️</span> Наши полки терпят поражение за поражением.</p>
+                            <p>Бастионы, что стояли веками, пали. Войска отступают — к последним рубежам</p>
+                            <p><span class="icon">🔥</span> Но хуже всего — их новое оружие</p>
+                            <p>То ли катапульты, то ли адские машины — укрепления рассыпаются в алых вспышках. Это точно тёмные силы</p>
+                            <p><span class="icon">🍷</span> Однако... есть один шанс.</p>
+                            <p>На окраине Астуриона стоит мраморный замок. Его хозяин — барон-отступник, что десятилетия чихать хотел на королевские указы. Говорят, в его подвалах хранится зелье:</p>
+                            <ul>
+                                <li>Капля — и солдат становится неуязвимым</li>
+                                <li>Глоток — и армия превращается в богов войны</li>
+                            </ul>
+                            <p>Но беда в том, что этот упырь не станет помогать нам просто так. Придётся действовать силой... или хитростью</p>
+                        </div>
                         
                         <div class="carousel">
                             <div class="carousel-images">
-                                <img src="images/evilworld_1.jpg" alt="Скриншот 1" class="active">
-                                <img src="images/evilworld_2.jpg" alt="Скриншот 2">
-                                <img src="images/evilworld_3.jpg" alt="Скриншот 3">
+                                <img src="images/skutumit_0.jpg" alt="Скриншот 0" class="active">
+                                <img src="images/skutumit_1.jpg" alt="Скриншот 1">
+                                <img src="images/skutumit_2.jpg" alt="Скриншот 2">
+                                <img src="images/skutumit_3.jpg" alt="Скриншот 3">
                             </div>
                             <button class="carousel-prev">&lt;</button>
                             <button class="carousel-next">&gt;</button>
@@ -111,8 +187,7 @@
                         </div>
                         
                         <div class="game-meta">
-                            <span class="game-genre">Платформер</span>
-                            <a href="https://evil-world.netlify.app/" class="btn">Играть</a>
+                            <a href="https://skutumit.netlify.app/" class="btn">Играть</a>
                         </div>
                     </div>
                 </div>
@@ -127,26 +202,21 @@
     </div>
 
     <!-- Подвал -->
-    <footer>
+    <footer id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>О себе</h3>
-                    <p>Я люблю делать игры. Может быть не отличаются ULTRA HD RTX++ графикой, но в них есть такая немаловажная штука под названием <b>душа.</b> Ну а если тебя это не особо впечатляет, то тут ещё есть весьма интересный сюжет и нетипичные для игровых жанров механики. Ты обязательно найдёшь для себя кое-что свежее</p>
-                </div>
-                
-                <div class="footer-section" id="contact">
-                    <h3>Контакты</h3>
+                    <h3 class="aqum-font">Контакты</h3>
                     <div class="footer-links">
-                        <a href="mailto:kolobroden@gmail.com">kolobroden@gmail.com</a>
-                        <a href="https://vk.com/occitan">VK</a>
-                        <a href="http://t.me/occitanian_world">Telegram</a>
+                        <a href="http://t.me/occitanian_world" class="aqum-font">Телеграм-канал</a>
+                        <a href="https://vk.com/occitan" class="aqum-font">ВК-сообщество</a>
+                        <a href="mailto:kolobroden@gmail.com" class="aqum-font"><b>Почта</b></a>
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; <span id="current-year"></span> Occitanoan. Все права конечно же защищены</p>
+                <p><span class="aqum-font">&copy; <span id="current-year"></span> Occitanian. Все права конечно же защищены</span></p>
             </div>
         </div>
     </footer>
@@ -239,8 +309,12 @@
             prevBtn.addEventListener('click', prevSlide);
             nextBtn.addEventListener('click', nextSlide);
             
-            // Автопрокрутка (опционально)
-            // setInterval(nextSlide, 5000);
+            // Клик по изображению для открытия в модальном окне
+            images.querySelectorAll('img').forEach(img => {
+                img.addEventListener('click', function() {
+                    openModal(this);
+                });
+            });
         });
     </script>
 </body>

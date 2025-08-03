@@ -1,65 +1,69 @@
-@font-face {
-    font-family: 'Aqum';
-    src: url('fonts/Aqum.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+/* Обновленная цветовая схема */
+:root {
+    --dark-bg: #0f0f17;
+    --card-bg: #1c1c25;
+    --text: #f0f0f0;
+    --text-secondary: #c0c0d0;
+    --accent: #7a6fff;
+    --accent-hover: #9c92ff;
+    --border: #333344;
+    --card-shadow: rgba(0, 0, 0, 0.6);
+    
+    /* Акцентные цвета игр */
+    --horror-accent: rgb(255, 0, 50);     /* Monstroloven - обновленный цвет */
+    --maze-accent: rgb(255, 0, 150);      /* Kolobroden */
+    --shooter-accent: rgb(150, 255, 255); /* Skutumit */
 }
 
-.aqum-font {
-    font-family: 'Aqum', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: 1px; /* Добавим небольшой межбуквенный интервал для лучшей читаемости */
-}
-
-/* Глобальные стили */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-:root {
-    --primary: #6a5acd;
-    --dark: #2d2b55;
-    --light: #f8f9fa;
-    --accent: #ff6b6b;
 }
 
 body {
-    background-color: #1a1a2e;
-    color: #e6e6ff;
-    line-height: 1.6;
+    background-color: var(--dark-bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-weight: 450;
 }
 
 .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
 /* Шапка */
 header {
-    background: linear-gradient(135deg, var(--dark), #1e1e40);
-    padding: 1rem 0;
+    background: #161620;
+    padding: 0.8rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid var(--border);
 }
 
 .logo {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--accent);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .logo-icon {
-    color: var(--primary);
+    height: 40px; /* Размер логотипа */
+    width: auto;
+}
+
+.aqum-font {
+    font-family: 'Aqum', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
+    font-weight: normal;
 }
 
 nav {
@@ -70,247 +74,333 @@ nav {
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
+    align-items: center;
 }
 
 .nav-links a {
-    color: var(--light);
+    color: var(--text);
     text-decoration: none;
-    font-weight: 500;
     transition: color 0.3s;
     position: relative;
+    font-size: 1.25rem;
 }
 
 .nav-links a:hover {
-    color: var(--accent);
+    color: var(--accent-hover);
 }
 
-.nav-links a::after {
-    content: '';
+/* Выпадающее меню */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
     position: absolute;
-    bottom: -5px;
+    background-color: #1c1c25;
+    min-width: 280px; /* Увеличили ширину */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    top: 100%;
     left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: width 0.3s;
-}
-
-.nav-links a:hover::after {
     width: 100%;
 }
 
-/* Герой-секция */
-.hero {
-    background: radial-gradient(circle at top right, #2d2b55 0%, #1a1a2e 100%);
-    padding: 5rem 0;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(90deg, #ff6b6b, #6a5acd);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.hero p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 2rem;
-    color: #b8b8d9;
-}
-
-.btn {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--primary), #8a7fff);
-    color: white;
-    padding: 12px 30px;
-    border-radius: 30px;
+.dropdown-content a {
+    color: var(--text);
+    padding: 15px 20px; /* Увеличили отступы */
     text-decoration: none;
-    font-weight: 600;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(106, 90, 205, 0.4);
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 1.15rem;
+    white-space: nowrap; /* Запрет переноса текста */
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(106, 90, 205, 0.6);
+.dropdown-icon {
+    width: 40px; /* Увеличили иконки */
+    height: 40px;
+    margin-right: 15px;
+}
+
+/* Цвета при наведении для каждого типа игры */
+.dropdown-horror:hover {
+    background-color: rgba(255, 0, 50, 0.2) !important;
+    color: var(--horror-accent) !important;
+}
+
+.dropdown-maze:hover {
+    background-color: rgba(255, 0, 150, 0.2) !important;
+    color: var(--maze-accent) !important;
+}
+
+.dropdown-shooter:hover {
+    background-color: rgba(150, 255, 255, 0.2) !important;
+    color: var(--shooter-accent) !important;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 /* Секция игр */
 .games-section {
-    padding: 5rem 0;
+    padding: 4rem 0 5rem;
+    background: linear-gradient(160deg, #0c0c14, #101018);
 }
 
-.game-title.aqum-font {
-    font-size: 1.7rem;
-    margin-bottom: 0.8rem;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2.5rem;
-    color: var(--accent);
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent), var(--primary));
-    margin: 10px auto;
-    border-radius: 2px;
-}
-
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2.5rem;
+.games-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
 }
 
 .game-card {
-    background: linear-gradient(145deg, #252547, #1c1c38);
-    border-radius: 15px;
+    background: var(--card-bg);
+    border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 12px 30px var(--card-shadow);
     transition: transform 0.4s, box-shadow 0.4s;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid #3a3a5a;
+    border: 1px solid var(--border);
+    text-align: center; /* Центрирование всего контента */
 }
 
 .game-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
 }
 
-.game-image {
+/* Контейнер обложки */
+.game-cover-container {
+    display: flex;
+    justify-content: center;
+    padding: 0;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 3px solid var(--primary);
 }
 
-.game-content {
-    padding: 1.5rem;
+/* Обложка игры */
+.game-cover {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid;
+}
+
+.game-title-image {
+    width: 100%;
+    height: auto;
+    max-height: 70vh; /* Увеличили высоту */
+    object-fit: cover; /* Заполнение всей области */
+    display: block;
+}
+
+/* Уникальные стили для каждого типа игры */
+.game-card-horror .game-cover {
+    border-color: var(--horror-accent);
+}
+
+.game-card-horror .game-title {
+    color: var(--horror-accent);
+}
+
+.game-card-maze .game-cover {
+    border-color: var(--maze-accent);
+}
+
+.game-card-maze .game-title {
+    color: var(--maze-accent);
+}
+
+.game-card-shooter .game-cover {
+    border-color: var(--shooter-accent);
+}
+
+.game-card-shooter .game-title {
+    color: var(--shooter-accent);
+}
+
+/* Заголовок игры */
+.game-header {
+    padding: 1.8rem 1.5rem 0.5rem;
+    text-align: center;
 }
 
 .game-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--accent);
-}
-
-.game-description {
-    color: #b8b8d9;
-    margin-bottom: 1.5rem;
-    height: 80px;
-    overflow: hidden;
-}
-
-.game-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
+    font-size: 2.4rem;
+    margin-bottom: 0.8rem;
 }
 
 .game-genre {
-    background: rgba(106, 90, 205, 0.2);
-    color: #8a7fff;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    background: rgba(122, 111, 255, 0.15); /* Цвет как у Окситанец */
+    color: var(--accent);
+    font-weight: 500;
 }
 
-/* Карусель */
+/* Контент игры */
+.game-content {
+    padding: 0 1.5rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.game-description {
+    color: var(--text-secondary);
+    margin: 1.5rem 0;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    font-weight: 450;
+    text-align: left; /* Описание по левому краю */
+}
+
+.game-description p {
+    margin-bottom: 1.2rem;
+}
+
+.game-description ul {
+    padding-left: 1.8rem;
+    margin: 1.5rem 0;
+}
+
+.game-description li {
+    margin-bottom: 0.8rem;
+    position: relative;
+}
+
+.game-description li::before {
+    content: "•";
+    color: var(--accent);
+    position: absolute;
+    left: -1.2rem;
+    font-size: 1.3rem;
+}
+
+.icon {
+    font-size: 1.3rem;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Карусель - 16:9 */
 .carousel {
     position: relative;
-    margin: 20px 0;
     overflow: hidden;
+    width: 100%;
+    margin: 2.5rem auto 1.5rem;
     border-radius: 8px;
-    height: 150px;
+    border: 1px solid var(--border);
+    max-width: 800px;
+    aspect-ratio: 16/9;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .carousel-images {
     display: flex;
-    transition: transform 0.5s ease;
+    width: 100%;
     height: 100%;
+    transition: transform 0.5s ease;
 }
 
 .carousel-images img {
     min-width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.carousel-images img:hover {
-    transform: scale(1.01);
-}
-
-.carousel-images img.active {
-    cursor: default;
 }
 
 .carousel-prev, .carousel-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(20, 20, 30, 0.7);
     color: white;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 12px;
     z-index: 10;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    backdrop-filter: blur(4px);
 }
 
 .carousel-prev:hover, .carousel-next:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(40, 40, 60, 0.9);
 }
 
 .carousel-prev {
-    left: 10px;
+    left: 15px;
 }
 
 .carousel-next {
-    right: 10px;
+    right: 15px;
 }
 
 .carousel-dots {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 5px;
+    gap: 8px;
+    z-index: 10;
 }
 
 .carousel-dots .dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.4);
     cursor: pointer;
+    transition: background 0.3s;
 }
 
 .carousel-dots .dot.active {
     background: white;
+    transform: scale(1.1);
+}
+
+/* Кнопка - прямоугольная с сильным скруглением */
+.btn {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 14px 45px;
+    border-radius: 15px; /* Сильное скругление */
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    margin-top: 0.5rem;
+    font-family: 'Aqum', sans-serif;
+    box-shadow: 0 4px 15px rgba(122, 111, 255, 0.4);
+    width: auto;
+    min-width: 200px;
+    text-align: center;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(122, 111, 255, 0.6);
 }
 
 /* Модальное окно */
@@ -318,30 +408,34 @@ nav {
     display: none;
     position: fixed;
     z-index: 1000;
-    padding-top: 100px;
+    padding-top: 50px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.95);
+    overflow: auto;
 }
 
 .modal-content {
-    margin: auto;
     display: block;
-    width: 80%;
-    max-width: 1200px;
+    margin: 0 auto;
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
 }
 
 .close {
     position: absolute;
-    top: 20px;
+    top: 25px;
     right: 35px;
     color: #f1f1f1;
-    font-size: 40px;
+    font-size: 45px;
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
+    z-index: 1001;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
 }
 
 .close:hover {
@@ -350,68 +444,135 @@ nav {
 
 /* Подвал */
 footer {
-    background: linear-gradient(135deg, var(--dark), #16162d);
-    padding: 3rem 0 2rem;
-    margin-top: 5rem;
+    background: #161620;
+    padding: 3.5rem 0 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .footer-section h3 {
     color: var(--accent);
-    margin-bottom: 1.5rem;
-    font-size: 1.4rem;
+    margin-bottom: 1.8rem;
+    font-size: 1.8rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
 }
 
 .footer-links a {
     display: block;
-    color: #b8b8d9;
-    margin-bottom: 0.8rem;
+    color: var(--text);
     text-decoration: none;
     transition: color 0.3s;
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
 }
 
 .footer-links a:hover {
-    color: var(--accent);
+    color: var(--accent-hover);
 }
 
 .copyright {
     text-align: center;
-    padding-top: 2rem;
-    margin-top: 2rem;
-    border-top: 1px solid #3a3a5a;
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--border);
     color: #8a8aaa;
+    font-size: 1.1rem;
 }
 
 /* Адаптивность */
+@media (max-width: 900px) {
+    .carousel {
+        max-width: 90%;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links {
-        gap: 1.2rem;
+        gap: 1.5rem;
     }
     
-    .hero h1 {
-        font-size: 2.5rem;
+    .game-title {
+        font-size: 2rem;
     }
     
-    .carousel {
-        height: 130px;
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn {
+        padding: 12px 35px;
+        min-width: 180px;
+    }
+    
+    .dropdown-content {
+        min-width: 220px;
+    }
+    
+    .game-title-image {
+        max-height: 50vh;
     }
 }
 
 @media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .logo-icon {
+        height: 30px;
+    }
+    
     .nav-links {
-        display: none;
+        gap: 1rem;
     }
     
-    .hero h1 {
-        font-size: 2rem;
+    .nav-links a {
+        font-size: 1.1rem;
     }
     
-    .carousel {
-        height: 110px;
+    .game-title {
+        font-size: 1.8rem;
+    }
+    
+    .game-genre {
+        font-size: 1rem;
+        padding: 6px 15px;
+    }
+    
+    .btn {
+        padding: 12px 30px;
+        min-width: 160px;
+        font-size: 1.05rem;
+    }
+    
+    .carousel-prev, .carousel-next {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+    }
+    
+    .dropdown-content {
+        min-width: 200px;
+    }
+    
+    .dropdown-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .game-title-image {
+        max-height: 40vh;
     }
 }
