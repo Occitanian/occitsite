@@ -107,8 +107,9 @@ nav {
     overflow: hidden;
     border: 1px solid var(--border);
     top: 100%;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
 }
 
 .dropdown-content a {
@@ -289,6 +290,19 @@ nav {
     font-size: 1.3rem;
     vertical-align: middle;
     margin-right: 5px;
+}
+
+/* Шрифты для описаний */
+.game-description-monstroloven {
+    font-family: 'Monomakh', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+}
+
+.game-description-goznak {
+    font-family: 'Goznak', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
 }
 
 /* Карусель - 16:9 */
@@ -518,10 +532,40 @@ footer {
     
     .dropdown-content {
         min-width: 220px;
+        left: 0;
+        transform: none;
+        width: 100%;
     }
     
     .game-title-image {
         max-height: 50vh;
+    }
+    
+    .game-title {
+        font-size: 1.8rem;
+        word-break: break-word;
+    }
+    
+    .dropdown-content a {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+    
+    .dropdown-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .game-description {
+        font-size: 1rem;
+    }
+    
+    .game-description-monstroloven {
+        font-size: 0.95rem;
+    }
+    
+    .game-description-goznak {
+        font-size: 1rem;
     }
 }
 
@@ -543,7 +587,7 @@ footer {
     }
     
     .game-title {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
     }
     
     .game-genre {
@@ -568,11 +612,19 @@ footer {
     }
     
     .dropdown-icon {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
     }
     
     .game-title-image {
         max-height: 40vh;
+    }
+    
+    .game-description ul {
+        padding-left: 1.5rem;
+    }
+    
+    .game-description li::before {
+        left: -1rem;
     }
 }
