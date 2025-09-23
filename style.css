@@ -13,6 +13,7 @@
     --horror-accent: rgb(255, 0, 50);     /* Monstroloven - обновленный цвет */
     --maze-accent: rgb(255, 0, 150);      /* Kolobroden */
     --shooter-accent: rgb(150, 255, 255); /* Skutumit */
+    --racing-accent: rgb(50, 50, 255);    /* Код Наперегонки */
 }
 
 * {
@@ -145,6 +146,11 @@ nav {
     color: var(--shooter-accent) !important;
 }
 
+.dropdown-racing:hover {
+    background-color: rgba(50, 50, 255, 0.2) !important;
+    color: var(--racing-accent) !important;
+}
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -226,6 +232,14 @@ nav {
     color: var(--shooter-accent);
 }
 
+.game-card-racing .game-cover {
+    border-color: var(--racing-accent);
+}
+
+.game-card-racing .game-title {
+    color: var(--racing-accent);
+}
+
 /* Заголовок игры */
 .game-header {
     padding: 1.8rem 1.5rem 0.5rem;
@@ -301,6 +315,12 @@ nav {
 
 .game-description-goznak {
     font-family: 'Goznak', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.game-description-kot {
+    font-family: 'Chef', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.1rem;
     letter-spacing: 0.5px;
 }
