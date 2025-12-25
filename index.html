@@ -6,6 +6,43 @@
     <title>Окситанец | Инди-игры</title>
     <link rel="icon" href="images/Summer.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <!-- Try to reduce aggressive caching for clients -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <script>
+        // Lightweight cache-busting: append version to key assets and unregister SWs
+        (function(){
+            const VERSION = '20251225-1';
+            // update stylesheet and favicon immediately (best chance to affect requests)
+            try{
+                document.querySelectorAll('link[rel="stylesheet"]').forEach(l=>{
+                    try{ if (l.href && !l.href.includes('v=')) l.href = l.href + (l.href.includes('?') ? '&' : '?') + 'v=' + VERSION; }catch(e){}
+                });
+                document.querySelectorAll('link[rel~="icon"]').forEach(i=>{
+                    try{ if (i.href && !i.href.includes('v=')) i.href = i.href + (i.href.includes('?') ? '&' : '?') + 'v=' + VERSION; }catch(e){}
+                });
+            }catch(e){}
+
+            // update images after DOM parsed (so img elements exist)
+            document.addEventListener('DOMContentLoaded', function(){
+                try{
+                    document.querySelectorAll('img').forEach(img=>{
+                        try{
+                            if (img.dataset.cacheBust === 'false') return;
+                            if (img.src && !img.src.includes('v=')) img.src = img.src + (img.src.includes('?') ? '&' : '?') + 'v=' + VERSION;
+                        }catch(e){}
+                    });
+                }catch(e){}
+            });
+
+            // unregister any service workers (prevents SW-cached old assets)
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(regs=>{ regs.forEach(r=> r.unregister()); }).catch(()=>{});
+            }
+        })();
+    </script>
     <style>
         @font-face {
             font-family: 'Aqum';
