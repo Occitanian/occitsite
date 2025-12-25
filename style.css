@@ -579,18 +579,24 @@ footer {
         display: block;
     }
 
+    /* Mobile nav becomes a full-screen overlay for easy tapping */
     .nav-links {
         gap: 1.5rem;
-        position: absolute;
-        right: 20px;
-        top: 70px;
-        background: #121216;
-        padding: 12px;
-        border-radius: 8px;
+        position: fixed;
+        right: 0;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        background: linear-gradient(180deg, rgba(18,18,22,0.98), rgba(8,8,12,0.98));
+        padding: 90px 20px 20px;
         display: none;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
+        justify-content: flex-start;
+        z-index: 1200;
     }
+
+    .nav-links a { font-size: 1.4rem; padding: 12px 0; }
 
     .nav-links.open { display: flex; }
 
@@ -606,6 +612,14 @@ footer {
     .btn {
         padding: 12px 35px;
         min-width: 180px;
+    }
+
+    /* Make action buttons full width on mobile for easier tap */
+    .btn {
+        width: 100%;
+        min-width: 0;
+        padding: 14px 20px;
+        border-radius: 12px;
     }
 
     .dropdown-content {
@@ -646,6 +660,34 @@ footer {
         font-size: 1rem;
     }
 
+    /* Collapsed descriptions and read-more button visible on mobile */
+    .game-description.collapsed {
+        max-height: 7.5rem;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .read-more-btn {
+        display: block;
+        margin: 0.5rem auto 0;
+        background: transparent;
+        border: none;
+        color: var(--accent-hover);
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .game-content { padding: 0 1rem 2rem; }
+
+    .carousel-prev, .carousel-next { width: 44px; height: 44px; }
+
+    .game-cover { border-bottom-width: 3px; }
+
+    .game-title { font-size: 1.9rem; }
+
+    .game-genre { padding: 6px 12px; }
+
     .games-list {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -683,6 +725,10 @@ footer {
         min-width: 160px;
         font-size: 1.05rem;
     }
+
+    .btn { width: 100%; }
+
+    .read-more-btn { font-size: 0.98rem; }
     
     .carousel-prev, .carousel-next {
         width: 35px;

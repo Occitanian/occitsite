@@ -400,7 +400,7 @@
             navToggle.addEventListener('click', function(){ const expanded = this.getAttribute('aria-expanded') === 'true'; this.setAttribute('aria-expanded', String(!expanded)); mainNav.classList.toggle('open'); });
         }
 
-        // Carousels with dots, keyboard and autoplay
+        // Carousels with dots, keyboard, autoplay and swipe support
         document.querySelectorAll('.carousel').forEach(carousel => {
             const images = carousel.querySelector('.carousel-images');
             const imagesCount = images.children.length;
@@ -410,20 +410,72 @@
             let currentIndex = 0; let autoplayTimer = null; const AUTOPLAY_MS = 4500;
 
             for (let i = 0; i < imagesCount; i++) {
-                const dot = document.createElement('span'); dot.classList.add('dot'); if (i === 0) dot.classList.add('active'); dot.addEventListener('click', () => goToSlide(i)); dotsContainer.appendChild(dot);
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
             }
+
             const dots = dotsContainer.querySelectorAll('.dot');
-            function goToSlide(index){ currentIndex = index; images.style.transform = `translateX(-${currentIndex * 100}%)`; dots.forEach((d,i)=> d.classList.toggle('active', i===currentIndex)); }
+
+            function goToSlide(index){
+                currentIndex = index;
+                images.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((d,i)=> d.classList.toggle('active', i===currentIndex));
+            }
+
             function nextSlide(){ currentIndex = (currentIndex + 1) % imagesCount; goToSlide(currentIndex); }
             function prevSlide(){ currentIndex = (currentIndex - 1 + imagesCount) % imagesCount; goToSlide(currentIndex); }
-            if (prevBtn) prevBtn.addEventListener('click', prevSlide); if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
             images.querySelectorAll('img').forEach(img => img.addEventListener('click', function(){ openModal(this); }));
+
             function startAutoplay(){ stopAutoplay(); autoplayTimer = setInterval(nextSlide, AUTOPLAY_MS); }
             function stopAutoplay(){ if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; } }
-            carousel.addEventListener('mouseenter', stopAutoplay); carousel.addEventListener('mouseleave', startAutoplay);
-            carousel.setAttribute('tabindex','0'); carousel.addEventListener('keydown', function(e){ if (e.key === 'ArrowLeft') prevSlide(); if (e.key === 'ArrowRight') nextSlide(); });
+
+            carousel.addEventListener('mouseenter', stopAutoplay);
+            carousel.addEventListener('mouseleave', startAutoplay);
+            carousel.setAttribute('tabindex','0');
+            carousel.addEventListener('keydown', function(e){ if (e.key === 'ArrowLeft') prevSlide(); if (e.key === 'ArrowRight') nextSlide(); });
+
+            // Touch / swipe support for mobile
+            let startX = null;
+            let deltaX = 0;
+            images.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; stopAutoplay(); }, {passive:true});
+            images.addEventListener('touchmove', function(e){ if (startX === null) return; deltaX = e.touches[0].clientX - startX; }, {passive:true});
+            images.addEventListener('touchend', function(e){
+                if (startX === null) return;
+                if (Math.abs(deltaX) > 40){ if (deltaX < 0) nextSlide(); else prevSlide(); }
+                startX = null; deltaX = 0; startAutoplay();
+            });
+
             startAutoplay();
         });
+
+        // Read-more collapse for long descriptions on small screens
+        function initReadMore() {
+            document.querySelectorAll('.game-description').forEach(desc => {
+                if (desc.dataset.rmInit === '1') return;
+                desc.dataset.rmInit = '1';
+                if (window.innerWidth <= 768 && desc.scrollHeight > 180) {
+                    desc.classList.add('collapsed');
+                    const btn = document.createElement('button');
+                    btn.className = 'read-more-btn';
+                    btn.type = 'button';
+                    btn.textContent = 'Подробнее';
+                    btn.addEventListener('click', function(){
+                        if (desc.classList.contains('collapsed')) { desc.classList.remove('collapsed'); this.textContent = 'Скрыть'; }
+                        else { desc.classList.add('collapsed'); this.textContent = 'Подробнее'; }
+                    });
+                    desc.parentNode.insertBefore(btn, desc.nextSibling);
+                }
+            });
+        }
+        window.addEventListener('DOMContentLoaded', initReadMore);
+        window.addEventListener('resize', function(){ if (window.innerWidth > 768) { document.querySelectorAll('.game-description').forEach(d=> d.classList.remove('collapsed')); } else { initReadMore(); } });
 
         // Tabs: filter games by genre
         document.querySelectorAll('.tab').forEach(tab => {
